@@ -1,4 +1,4 @@
-import {createMuiTheme} from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles';
 import grey from '@material-ui/core/colors/grey';
 import yellow from '@material-ui/core/colors/yellow';
 
@@ -10,7 +10,7 @@ const theme = createMuiTheme({
   overrides: {
     MuiButton: {
       text: {
-        // 'text-transform': 'none',
+        'text-transform': 'none',
       },
     },
   },
