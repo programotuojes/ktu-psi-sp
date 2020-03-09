@@ -4,6 +4,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 
 import theme from './theme';
 import Homepage from './pages/homepage/Homepage';
+import Shop from './pages/shop/Shop';
 import NavBar from './components/NavBar';
 
 function App() {
@@ -13,9 +14,8 @@ function App() {
 
       <BrowserRouter>
         <Switch>
-          <Route exact path={'/'}>
-            <Homepage />
-          </Route>
+          <Route exact path={'/'} component={Homepage} />
+          <Route exact path={'/shop'} component={Shop} />
         </Switch>
       </BrowserRouter>
     </ThemeProvider>
