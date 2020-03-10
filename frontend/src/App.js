@@ -5,7 +5,7 @@ import Homepage from './pages/homepage/Homepage';
 
 function App() {
   return (
-    <>
+
       <BrowserRouter>
         <Switch>
           <Route exact path={'/'}>
@@ -13,7 +13,6 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
-    </>
   );
 }
 
