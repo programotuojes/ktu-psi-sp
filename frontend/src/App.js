@@ -19,15 +19,9 @@ function App() {
         <Switch>
           <Route exact path={'/'} component={Homepage} />
           <Route exact path={'/shop'} component={Shop} />
-          <Route exact path={'/about'}>
-            <About />
-          </Route>
-          <Route exact path={'/blog'}>
-            <Blog />
-          </Route>
-          <Route exact path={'/payment'}>
-            <Payment />
-          </Route>
+          <Route exact path={'/about'} component={About} />
+          <Route exact path={'/blog'} component={Blog} />
+          <Route exact path={'/payment'} component={Payment} />
         </Switch>
       </BrowserRouter>
     </ThemeProvider>
