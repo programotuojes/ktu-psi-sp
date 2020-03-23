@@ -42,7 +42,6 @@ function Homepage() {
         <title>{title}</title>
       </Helmet>
 
-      <h1>Homepage</h1>
       <Grid container spacing={2}>
         <ImageButton image={blogLogo} url={'/blog'} text={'Blogas'} style={classes.blog_header} />
         <ImageButton image={shopLogo} url={'/shop'} text={'E-parduotuvė'} style={classes.shop_header}
