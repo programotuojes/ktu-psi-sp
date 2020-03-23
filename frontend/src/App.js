@@ -14,7 +14,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <NavBar />
-
       <BrowserRouter>
         <Switch>
           <Route exact path={'/'} component={Homepage} />
