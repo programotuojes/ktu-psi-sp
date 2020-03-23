@@ -12,9 +12,9 @@ import Payment from './pages/payment/Payment';
 
 function App() {
   return (
-
     <ThemeProvider theme={theme}>
       <NavBar />
+
       <BrowserRouter>
         <Switch>
           <Route exact path={'/'} component={Homepage} />
@@ -25,7 +25,6 @@ function App() {
         </Switch>
       </BrowserRouter>
     </ThemeProvider>
-
   );
 }
 
