@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core/styles';
+import { HelmetProvider } from 'react-helmet-async';
 
 import theme from './theme';
 import Homepage from './pages/homepage/Homepage';
@@ -12,18 +13,20 @@ import Payment from './pages/payment/Payment';
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <NavBar />
-      <BrowserRouter>
-        <Switch>
-          <Route exact path={'/'} component={Homepage} />
-          <Route exact path={'/shop'} component={Shop} />
-          <Route exact path={'/about'} component={About} />
-          <Route exact path={'/blog'} component={Blog} />
-          <Route exact path={'/payment'} component={Payment} />
-        </Switch>
-      </BrowserRouter>
-    </ThemeProvider>
+    <HelmetProvider>
+      <ThemeProvider theme={theme}>
+        <NavBar />
+        <BrowserRouter>
+          <Switch>
+            <Route exact path={'/'} component={Homepage} />
+            <Route exact path={'/shop'} component={Shop} />
+            <Route exact path={'/about'} component={About} />
+            <Route exact path={'/blog'} component={Blog} />
+            <Route exact path={'/payment'} component={Payment} />
+          </Switch>
+        </BrowserRouter>
+      </ThemeProvider>
+    </HelmetProvider>
   );
 }
 
