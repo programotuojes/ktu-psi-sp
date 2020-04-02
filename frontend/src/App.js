@@ -12,7 +12,6 @@ import Payment from './pages/payment/Payment';
 
 function App() {
   return (
-
     <ThemeProvider theme={theme}>
       <NavBar />
       <BrowserRouter>
@@ -25,7 +24,6 @@ function App() {
         </Switch>
       </BrowserRouter>
     </ThemeProvider>
-
   );
 }
 
