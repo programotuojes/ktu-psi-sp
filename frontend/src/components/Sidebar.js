@@ -36,7 +36,7 @@ function Sidebar() {
         <Divider />
 
         {categories.slice(1, -1).map((text) => (
-          <ListItem button key={text} onClick={}>
+          <ListItem button key={text}>
             <ListItemText primary={text} />
           </ListItem>
         ))}
