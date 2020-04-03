@@ -1,26 +1,49 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
-  img: {
-    height: '27%',
-    width: '20%',
+  root: {
+    maxWidth: 260,
+    margin: 25,
+  },
+  media: {
+    height: 300,
+    width: 250,
+    margin: 5,
+  },
+  cardContent: {
+    paddingTop: 8,
+    '&:last-child': {
+      paddingBottom: 0,
+    },
   },
 });
 
-/*https://js.devexpress.com/Demos/WidgetsGallery/Demo/List/ItemTemplate/React/Light/*/
-function ItemTemplate(props) {
+function ItemTemplate({ image, title, price }) {
   const classes = useStyles();
   return (
-    <div>
-      <img src={props.image} className={classes.img} />
-      <div>{props.title}</div>
-      <div>{FormatPrice(props.value)}</div>
-    </div>
+    <Card className={classes.root} elevation={4}>
+      <CardActionArea>
+        <CardMedia className={classes.media} image={image} title={title} />
+      </CardActionArea>
+      <CardContent className={classes.cardContent}>
+        <Typography variant="body1" color="textSecondary" align="center">
+          {title}
+        </Typography>
+        <Typography gutterBottom variant="h6" align="center">
+          {formatPrice(price)}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 }
 
-function FormatPrice(price) {
-  return new Intl.NumberFormat('lt-LT', { style: 'currency', currency: 'EUR' }).format(price);
+function formatPrice(price) {
+  return new Intl.NumberFormat('lt-LT', { style: 'currency', currency: 'EUR' }).format(price / 100);
 }
 export default ItemTemplate;
