@@ -15,9 +15,9 @@ function Shop() {
       </Helmet>
 
       <h1>Shop</h1>
-      <ItemTemplate image={pict} title={'jacket'} value={20} />
-      <ItemTemplate image={pict2} title={'jacket'} value={50} />
-      <ItemTemplate image={pict3} title={'shorts'} value={150} />
+      <ItemTemplate image={pict} title={'jacket'} price={20}/>
+      <ItemTemplate image={pict2} title={'jacket'} price={50} />
+      <ItemTemplate image={pict3} title={'shorts'} price={150} />
     </>
   );
 }
