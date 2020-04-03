@@ -8,12 +8,13 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 290,
+    maxWidth: 260,
+    margin: 25,
   },
   media: {
     height: 300,
     width: 250,
-    margin: 20,
+    margin: 5,
   },
   cardContent: {
     paddingTop: 8,

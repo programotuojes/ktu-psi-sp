@@ -14,7 +14,6 @@ function Shop() {
         <title>{title}</title>
       </Helmet>
 
-      <h1>Shop</h1>
       <ItemTemplate image={img} title={'jacket'} price={2000} />
       <ItemTemplate image={img2} title={'jumper'} price={5005} />
       <ItemTemplate image={img3} title={'shorts'} price={15014} />
