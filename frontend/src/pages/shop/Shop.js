@@ -1,9 +1,9 @@
-import React from "react";
-import { Helmet } from "react-helmet";
-import ItemTemplate from "./ItemTemplate";
-import pict from "./jacket1.jpg";
-import pict2 from "./jacket2.jpg";
-import pict3 from "./shorts.jpg";
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import ItemTemplate from './ItemTemplate';
+import img from './jacket1.jpg';
+import img2 from './jumper.jpg';
+import img3 from './shorts.jpg';
 
 const title = 'Shop';
 
@@ -15,9 +15,9 @@ function Shop() {
       </Helmet>
 
       <h1>Shop</h1>
-      <ItemTemplate image={pict} title={'jacket'} price={20}/>
-      <ItemTemplate image={pict2} title={'jacket'} price={50} />
-      <ItemTemplate image={pict3} title={'shorts'} price={150} />
+      <ItemTemplate image={img} title={'jacket'} price={2000} />
+      <ItemTemplate image={img2} title={'jumper'} price={5005} />
+      <ItemTemplate image={img3} title={'shorts'} price={15014} />
     </>
   );
 }
