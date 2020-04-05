@@ -7,7 +7,6 @@ export function toggleSidebar(open) {
   };
 }
 
-// eslint-disable-next-line
 export function selectCategory(selectedCategory) {
   return {
     type: SELECT_CATEGORY,
