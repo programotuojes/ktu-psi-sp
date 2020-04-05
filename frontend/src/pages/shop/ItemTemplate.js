@@ -28,7 +28,7 @@ function ItemTemplate({ image, title, price }) {
   const classes = useStyles();
   return (
     <Card className={classes.root} elevation={4}>
-      <CardActionArea>
+      <CardActionArea href='/shop/ProductPageTemplate'>
         <CardMedia className={classes.media} image={image} title={title} />
       </CardActionArea>
       <CardContent className={classes.cardContent}>

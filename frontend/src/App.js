@@ -9,6 +9,7 @@ import NavBar from './components/NavBar';
 import About from './pages/about/About';
 import Blog from './pages/blog/Blog';
 import Payment from './pages/payment/Payment';
+import ProductPageTemplate from "./pages/shop/ProductPageTemplate";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path={'/about'} component={About} />
           <Route exact path={'/blog'} component={Blog} />
           <Route exact path={'/payment'} component={Payment} />
+          <Route exact path={'/shop/ProductPageTemplate'} component={ProductPageTemplate} />
         </Switch>
       </BrowserRouter>
     </ThemeProvider>
