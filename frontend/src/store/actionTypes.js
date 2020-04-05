@@ -1,0 +1,2 @@
+export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
+export const SELECT_CATEGORY = 'SELECT_CATEGORY';

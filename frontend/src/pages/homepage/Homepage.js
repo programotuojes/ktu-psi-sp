@@ -1,5 +1,5 @@
 import React from 'react';
-import {Helmet} from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import ImageButton from './ImageButton';
 import blogLogo from './blogLogo.png';
 import shopLogo from './shopLogo.jpg';
