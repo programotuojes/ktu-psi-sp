@@ -2,7 +2,9 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { makeStyles } from '@material-ui/core/styles';
 import shopData from './shopData';
-import ItemGrid from './ItemGrid';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import ItemTemplate from './ItemTemplate';
 
 const title = 'Shop';
 
@@ -25,7 +27,15 @@ function Shop() {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      {ItemGrid(shopData, classes)}
+      <div className={classes.root} align={'center'}>
+        <GridList className={classes.gridList} cellHeight={500} cols={3}>
+          {shopData.map((props) => (
+            <GridListTile>
+              <ItemTemplate image={props.img} title={props.title} price={props.price} />
+            </GridListTile>
+          ))}
+        </GridList>
+      </div>
     </>
   );
 }
