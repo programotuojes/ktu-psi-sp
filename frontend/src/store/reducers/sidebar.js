@@ -3,7 +3,7 @@ import { TOGGLE_SIDEBAR, SELECT_CATEGORY } from '../actionTypes';
 
 const initialState = {
   open: false,
-  category: CATEGORIES.NEWS,
+  category: CATEGORIES[0],
 };
 
 export default function sidebarReducer(state = initialState, action) {

@@ -6,7 +6,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
-import { toggleSidebar } from '../store/actions/sidebar';
+import { selectCategory, toggleSidebar } from '../store/actions/sidebar';
 import { Toolbar } from '@material-ui/core';
 import { isSidebarOpen } from '../store/selectors/sidebar';
 import { CATEGORIES } from '../constants';
@@ -21,7 +21,6 @@ function Sidebar() {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  const categories = Object.values(CATEGORIES);
   const open = useSelector(isSidebarOpen);
 
   return (
@@ -29,15 +28,19 @@ function Sidebar() {
       <Toolbar />
 
       <List className={classes.list}>
-        <ListItem button key={categories[0]}>
-          <ListItemText primary={categories[0]} />
+        <ListItem
+          button
+          key={CATEGORIES[0]}
+          onClick={() => dispatch(selectCategory(CATEGORIES[0]))}
+        >
+          <ListItemText primary={CATEGORIES[0]} />
         </ListItem>
 
         <Divider />
 
-        {categories.slice(1, -1).map((text) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
+        {CATEGORIES.slice(1).map((category) => (
+          <ListItem button key={category} onClick={() => dispatch(selectCategory(category))}>
+            <ListItemText primary={category} />
           </ListItem>
         ))}
       </List>
