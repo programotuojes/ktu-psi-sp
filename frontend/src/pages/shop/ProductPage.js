@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import img from './jacket1.jpg';
+import {Button} from "@material-ui/core";
 
 const useStyles = makeStyles({
     img: {
@@ -23,6 +24,13 @@ const useStyles = makeStyles({
     },
     text: {
         marginTop: '32px',
+    },
+    flexboxcontainer: {
+        display: 'flex',
+        flexDirection: 'row',
+    },
+    flexitem: {
+        marginTop: 20
     }
 });
 
@@ -53,6 +61,23 @@ function ProductPage()
                         <Typography variant={'h6'}>
                             Price: 20,00 <span className={classes.currency}>EUR.</span>
                         </Typography>
+                        <div className={classes.flexcontainer}>
+                            <div className={classes.flexitem}>
+                                <label>Pasirinkite dydį: </label>
+                                <select>
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                </select>
+                            </div>
+                            <div className={classes.flexitem}>
+                                <label>Kiekis: </label>
+                                <input name="qty" type="number" value="0"/>
+                            </div>
+                            <Button className={classes.flexitem} variant="contained" color="primary">Į krepšelį</Button>
+                        </div>
                     </Grid>
                 </div>
             </Grid>
