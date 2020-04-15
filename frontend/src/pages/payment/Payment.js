@@ -11,8 +11,7 @@ function Payment() {
         <title>{title}</title>
       </Helmet>
 
-      <h1>PaymentPage</h1>
-      <UserInformation/>
+      <UserInformation />
     </>
   );
 }
