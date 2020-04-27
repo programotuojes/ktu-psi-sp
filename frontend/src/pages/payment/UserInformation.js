@@ -37,7 +37,7 @@ const validate = (values) => {
 
   if (!values.city) errors.city = 'Privalomas laukas';
 
-  if (!values.adress) errors.adress = 'Privalomas laukas';
+  if (!values.address) errors.address = 'Privalomas laukas';
 
   if (!values.phone) errors.phone = 'Privalomas laukas';
   else if (!/(86|\+3706)\d{7}$/.test(values.phone)) {
@@ -56,7 +56,7 @@ export default function UserInformation() {
       firstName: '',
       lastName: '',
       email: '',
-      adress: '',
+      address: '',
       city: '',
       phone: '',
     },
@@ -134,15 +134,15 @@ export default function UserInformation() {
             <div>
               <TextField
                 className={classes.textField}
-                id="adress"
+                id="address"
                 label="Adresas"
                 defaultValue=""
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                value={formik.values.adress}
+                value={formik.values.address}
               />
-              {formik.touched.adress && formik.errors.adress ? (
-                <div className={classes.errorMessage}>{formik.errors.adress}</div>
+              {formik.touched.address && formik.errors.address ? (
+                <div className={classes.errorMessage}>{formik.errors.address}</div>
               ) : null}
             </div>
 
