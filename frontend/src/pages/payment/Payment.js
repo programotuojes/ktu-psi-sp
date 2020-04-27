@@ -11,7 +11,7 @@ function Payment() {
         <title>{title}</title>
       </Helmet>
 
-      <UserInformation />
+      <UserInformation></UserInformation>
     </>
   );
 }

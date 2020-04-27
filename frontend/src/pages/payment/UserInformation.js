@@ -11,28 +11,35 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   errorMessage: {
-    color: 'red',
+    color: '#D8000C',
   },
 }));
 
 const validate = (values) => {
   const errors = {};
 
-  if (!values.firstName);
+  if (!values.firstName) errors.firstName = 'Privalomas laukas';
   else if (!(values.firstName.length > 2 && values.firstName.length < 50)) {
     errors.firstName = 'Vardas turi būti tarp 2 ir 50 simbolių';
   }
 
-  if (!values.firstName);
+  if (!values.lastName) errors.lastName = 'Privalomas laukas';
   else if (!(values.lastName.length > 2 && values.lastName.length < 50)) {
     errors.lastName = 'Pavardė turi būti tarp 2 ir 50 simbolių';
   }
 
-  if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+  if (
+    values.email.trim() &&
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email.trim())
+  ) {
     errors.email = 'Netinkamas el-paštas';
   }
 
-  if (!values.phone);
+  if (!values.city) errors.city = 'Privalomas laukas';
+
+  if (!values.adress) errors.adress = 'Privalomas laukas';
+
+  if (!values.phone) errors.phone = 'Privalomas laukas';
   else if (!/(86|\+3706)\d{7}$/.test(values.phone)) {
     errors.phone = 'Netinkamas telefono numerio formatas';
   }
@@ -49,6 +56,8 @@ export default function UserInformation() {
       firstName: '',
       lastName: '',
       email: '',
+      adress: '',
+      city: '',
       phone: '',
     },
     validate,
@@ -66,7 +75,6 @@ export default function UserInformation() {
             <div>
               <TextField
                 className={classes.textField}
-                required
                 id="firstName"
                 label="Vardas"
                 defaultValue=""
@@ -82,7 +90,6 @@ export default function UserInformation() {
             <div>
               <TextField
                 className={classes.textField}
-                required
                 id="lastName"
                 label="Pavardė"
                 onChange={formik.handleChange}
@@ -112,27 +119,36 @@ export default function UserInformation() {
             <div>
               <TextField
                 className={classes.textField}
-                required
+                id="city"
+                label="Miestas"
+                defaultValue=""
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.city}
+              />
+              {formik.touched.city && formik.errors.city ? (
+                <div className={classes.errorMessage}>{formik.errors.city}</div>
+              ) : null}
+            </div>
+
+            <div>
+              <TextField
+                className={classes.textField}
                 id="adress"
                 label="Adresas"
                 defaultValue=""
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.adress}
               />
+              {formik.touched.adress && formik.errors.adress ? (
+                <div className={classes.errorMessage}>{formik.errors.adress}</div>
+              ) : null}
             </div>
 
             <div>
               <TextField
                 className={classes.textField}
-                required
-                id="Miestas"
-                label="Miestas"
-                defaultValue=""
-              />
-            </div>
-
-            <div>
-              <TextField
-                className={classes.textField}
-                required
                 id="phone"
                 label="Telefonas"
                 defaultValue=""
