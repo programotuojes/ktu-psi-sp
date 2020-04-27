@@ -77,7 +77,6 @@ export default function UserInformation() {
                 className={classes.textField}
                 id="firstName"
                 label="Vardas"
-                defaultValue=""
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.firstName}
@@ -106,7 +105,6 @@ export default function UserInformation() {
                 className={classes.textField}
                 id="email"
                 label="El.paštas"
-                defaultValue=""
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
@@ -121,7 +119,6 @@ export default function UserInformation() {
                 className={classes.textField}
                 id="city"
                 label="Miestas"
-                defaultValue=""
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.city}
@@ -136,7 +133,6 @@ export default function UserInformation() {
                 className={classes.textField}
                 id="address"
                 label="Adresas"
-                defaultValue=""
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.address}
@@ -151,7 +147,6 @@ export default function UserInformation() {
                 className={classes.textField}
                 id="phone"
                 label="Telefonas"
-                defaultValue=""
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.phone}
