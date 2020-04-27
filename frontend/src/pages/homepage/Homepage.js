@@ -32,16 +32,6 @@ const useStyles = makeStyles({
     'font-size': '53px',
     'text-shadow': '-5px 0 black, 0 2px black, 1px 0 black, 0 -3px black',
   },
-
-  shop_image: {
-    height: '100%',
-    width: '50%',
-  },
-
-  blog_image: {
-    height: '100%',
-    width: '50%',
-  },
 });
 
 function Homepage() {
@@ -53,20 +43,12 @@ function Homepage() {
       </Helmet>
 
       <Grid container spacing={2}>
+        <ImageButton image={blogLogo} url={'/blog'} text={'Blogas'} style={classes.blog_header} />
         <ImageButton
-          url={'/blog'}
-          image={blogLogo}
-          imageStyle={classes.blog_image}
-          text={'Blogas'}
-          textStyle={classes.blog_header}
-        />
-        <ImageButton
-          url={'/shop'}
           image={shopLogo}
-          image
-          Style={classes.shop_image}
+          url={'/shop'}
           text={'E-parduotuvė'}
-          textStyle={classes.shop_header}
+          style={classes.shop_header}
         />
       </Grid>
     </>

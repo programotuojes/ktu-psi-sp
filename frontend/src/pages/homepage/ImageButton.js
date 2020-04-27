@@ -1,10 +1,10 @@
 import React from 'react';
 
-function ImageButton({ url, image, imageStyle, text, textStyle }) {
+function ImageButton(props) {
   return (
-    <a href={url}>
-      <img src={image} alt={'Page logo'} />
-      <h2 className={textStyle}>{text}</h2>
+    <a href={props.url}>
+      <img src={props.image} alt={'Page logo'} />
+      <h2 className={props.style}>{props.text}</h2>
     </a>
   );
 }
