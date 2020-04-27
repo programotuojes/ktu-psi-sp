@@ -5,7 +5,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import img from './jacket1.jpg';
 import {Button, InputLabel, Select} from '@material-ui/core';
-import TextField from "@material-ui/core/TextField";
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles({
   img: {
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   flexboxContainer: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   flexItem: {
     marginTop: 20,
@@ -48,7 +48,6 @@ function ProductPage() {
     });
   };
   const [state, setState] = React.useState({
-    age: '',
   });
   return (
     <>
@@ -77,11 +76,16 @@ function ProductPage() {
             <div className={classes.flexboxContainer}>
               <div className={classes.flexItem}>
                 <InputLabel htmlFor="selectsize">Size</InputLabel>
-                <Select native value={state.size} onChange={handleChange} inputProps={{
-                  name: 'size',
-                  id: 'selectsize',
-                }}>
-                  <option aria-label="None" value=""/>
+                <Select
+                  native
+                  value={state.size}
+                  onChange={handleChange}
+                  inputProps={{
+                    name: 'size',
+                    id: 'selectsize',
+                  }}
+                >
+                  <option aria-label="None" value="" />
                   <option value="XS">XS</option>
                   <option value="S">S</option>
                   <option value="M">M</option>
@@ -91,13 +95,13 @@ function ProductPage() {
               </div>
               <div className={classes.flexItem}>
                 <TextField
-                    id="qty"
-                    label="Quantity"
-                    type="number"
-                    defaultValue="1"
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
+                  id="qty"
+                  label="Quantity"
+                  type="number"
+                  defaultValue="1"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
                 />
               </div>
               <Button className={classes.flexItem} variant="contained" color="primary">
