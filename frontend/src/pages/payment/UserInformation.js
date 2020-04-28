@@ -3,11 +3,13 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import { useFormik } from 'formik';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: 200,
+const useStyles = makeStyles((theme) => {
+  return {
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: 200,
+      },
     },
   },
   errorMessage: {
@@ -70,6 +72,15 @@ export default function UserInformation() {
   return (
     <>
       <form onSubmit={formik.handleSubmit} className={classes.root} autoComplete="off">
+=======
+  };
+});
+
+export default function UserInformation() {
+  const classes = useStyles();
+  return (
+    <>
+      <form className={classes.root} autoComplete="off">
         <div>
           <div>
             <div>
