@@ -39,7 +39,6 @@ function Payment() {
         <title>{title}</title>
       </Helmet>
 
-      <UserInformation></UserInformation>
       <Grid container className={classes.root} cols={3}>
         <Grid item xs>
           <div className={classes.title}>Pirkėjo informacija</div>
