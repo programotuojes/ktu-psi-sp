@@ -9,7 +9,9 @@ import NavBar from './components/NavBar';
 import About from './pages/about/About';
 import Blog from './pages/blog/Blog';
 import Payment from './pages/payment/Payment';
-import ProductPage from "./pages/shop/ProductPage";
+import ProductPage from './pages/shop/ProductPage';
+import PaymentConfirmation from './pages/confirmation/PaymentConfirmation';
+import ShoppingCart from './pages/shoppingCart/ShoppingCart';
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
             <Route exact path={'/about'} component={About} />
             <Route exact path={'/blog'} component={Blog} />
             <Route exact path={'/payment'} component={Payment} />
-            <Route exact path={'/shop/ProductPage'} component={ProductPage} />
+            <Route exact path={'/shop/productPage'} component={ProductPage} />
+            <Route exact path={'/payment/confirmation'} component={PaymentConfirmation} />
+            <Route exact path={'/shop/cart'} component={ShoppingCart} />
           </Switch>
         </BrowserRouter>
       </ThemeProvider>
