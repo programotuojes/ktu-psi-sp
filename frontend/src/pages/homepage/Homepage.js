@@ -4,7 +4,7 @@ import ImageButton from './ImageButton';
 import blogLogo from './blogLogo.png';
 import shopLogo from './shopLogo.jpg';
 import Grid from '@material-ui/core/Grid';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 const title = 'Homepage';
 
@@ -44,7 +44,11 @@ function Homepage() {
 
       <Grid container spacing={2}>
         <ImageButton image={blogLogo} url={'/blog'} text={'Blogas'} style={classes.blog_header} />
-        <ImageButton image={shopLogo} url={'/shop'} text={'E-parduotuvė'} style={classes.shop_header}
+        <ImageButton
+          image={shopLogo}
+          url={'/shop'}
+          text={'E-parduotuvė'}
+          style={classes.shop_header}
         />
       </Grid>
     </>
