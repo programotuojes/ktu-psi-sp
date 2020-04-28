@@ -1,21 +1,22 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import { makeStyles, responsiveFontSizes } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: 200,
+const useStyles = makeStyles((theme) => {
+  return {
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: 200,
+      },
     },
-  },
-}));
+  };
+});
+
 export default function UserInformation() {
   const classes = useStyles();
-
   return (
     <>
-      <h2>Pirkėjo informacija</h2>
       <form className={classes.root} autoComplete="off">
         <div>
           <div>
