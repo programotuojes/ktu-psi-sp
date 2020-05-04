@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Helmet } from 'react-helmet-async';
 import Sidebar from '../../components/Sidebar';
 import ItemTemplate from './ItemTemplate';
@@ -37,7 +37,7 @@ function Shop() {
       <Sidebar />
 
       <Typography align={'center'} className={classes.categoryLabel}>
-        {category}
+        {category.name}
       </Typography>
 
       <div className={classes.root} align={'center'}>
