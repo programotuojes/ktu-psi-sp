@@ -3,9 +3,28 @@ import {Helmet} from 'react-helmet-async';
 import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import img from './jacket1.jpg';
+import img1 from './jacket1.jpg';
+import img2 from './jumper.jpg';
+import img3 from './shorts.jpg';
 import {Button, InputLabel, Select} from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/css/image-gallery.css";
+
+const photos = [
+  {
+    original: img1,
+    thumbnail: img1,
+  },
+  {
+    original: img2,
+    thumbnail: img2,
+  },
+  {
+    original: img3,
+    thumbnail: img3,
+  }
+]
 
 const useStyles = makeStyles({
   img: {
@@ -60,8 +79,11 @@ function ProductPage() {
             "Lorem ipsum"
           </Typography>
         </Grid>
+
         <div align="center">
-          <img src={img} alt="Lorem ipsum" className={classes.img} />
+
+          <ImageGallery items={photos} showPlayButton={false} />
+
           <Grid item xs={6}>
             <Typography variant={'body1'} className={classes.desc}>
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquam purus
