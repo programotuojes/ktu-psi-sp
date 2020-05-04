@@ -9,7 +9,7 @@ import Divider from '@material-ui/core/Divider';
 import { selectCategory, toggleSidebar } from '../store/actions/sidebar';
 import { Toolbar } from '@material-ui/core';
 import { isSidebarOpen } from '../store/selectors/sidebar';
-import { CATEGORIES } from '../constants';
+import { CATEGORIES } from '../util/constants';
 
 const useStyles = makeStyles({
   list: {
