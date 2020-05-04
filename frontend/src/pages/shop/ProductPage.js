@@ -1,15 +1,15 @@
 import React from 'react';
-import {Helmet} from 'react-helmet-async';
+import { Helmet } from 'react-helmet-async';
 import Typography from '@material-ui/core/Typography';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import img1 from './jacket1.jpg';
 import img2 from './jumper.jpg';
 import img3 from './shorts.jpg';
-import {Button, InputLabel, Select} from '@material-ui/core';
+import { Button, InputLabel, Select } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import ImageGallery from 'react-image-gallery';
-import "react-image-gallery/styles/css/image-gallery.css";
+import 'react-image-gallery/styles/css/image-gallery.css';
 
 const photos = [
   {
@@ -23,8 +23,8 @@ const photos = [
   {
     original: img3,
     thumbnail: img3,
-  }
-]
+  },
+];
 
 const useStyles = makeStyles({
   img: {
@@ -66,8 +66,7 @@ function ProductPage() {
       [name]: event.target.value,
     });
   };
-  const [state, setState] = React.useState({
-  });
+  const [state, setState] = React.useState({});
   return (
     <>
       <Helmet>
@@ -81,7 +80,6 @@ function ProductPage() {
         </Grid>
 
         <div align="center">
-
           <ImageGallery items={photos} showPlayButton={false} />
 
           <Grid item xs={6}>
