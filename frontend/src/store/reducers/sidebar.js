@@ -1,4 +1,4 @@
-import { CATEGORIES } from '../../constants.js';
+import { CATEGORIES } from '../../util/constants.js';
 import { TOGGLE_SIDEBAR, SELECT_CATEGORY } from '../actionTypes';
 
 const initialState = {
