@@ -32,8 +32,11 @@ const useStyles = makeStyles({
     paddingRight: '24px',
     borderBottom: '1px ridge',
     fontFamily: 'Open Sans',
-    color: 'white',
+    color: 'white'
   },
+  icons: {
+    color: 'white'
+  }
 });
 
 function NavBar() {
@@ -50,6 +53,7 @@ function NavBar() {
           aria-label="open sidebar"
           onClick={() => dispatch(toggleSidebar(!open))}
           edge="start"
+          className={classes.icons}
         >
           <MenuIcon />
         </IconButton>
@@ -57,10 +61,10 @@ function NavBar() {
     }
   };
   const shoppingCartButton = () => {
-    if(window.location.pathname == '/shop') {
+    if(window.location.pathname === '/shop') {
       return (
         <IconButton className={classes.icon} href="/shop/cart" aria-label="Shopping cart">
-            <ShoppingBasketIcon width={'100px'} height={'100px'} fill={'white'}></ShoppingBasketIcon>
+            <ShoppingBasketIcon width={'100px'} height={'100px'} className={classes.icons}/>
             
           </IconButton>
       );
