@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Typography } from '@material-ui/core';
 
 const title = 'Shopping Cart';
 

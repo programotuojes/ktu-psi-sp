@@ -10,7 +10,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import {toggleSidebar} from '../store/actions/sidebar';
 import {isSidebarOpen} from '../store/selectors/sidebar';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-import grey from '@material-ui/core/colors/grey';
 
 const useStyles = makeStyles({
   appBar: {
@@ -42,7 +41,6 @@ const useStyles = makeStyles({
 function NavBar() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const accent = grey[50];
 
   const open = useSelector(isSidebarOpen);
 
