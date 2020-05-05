@@ -79,57 +79,63 @@ function ProductPage() {
           </Typography>
         </Grid>
 
-        <div align="center">
-          <ImageGallery items={photos} showPlayButton={false} />
+        <Grid container direction={'row'}>
+          <Grid item xs={6}>
+            <ImageGallery items={photos} showPlayButton={false} />
+          </Grid>
 
           <Grid item xs={6}>
-            <Typography variant={'body1'} className={classes.desc}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquam purus
-              leo, eget ultrices augue mollis non. Donec in nisi vel libero condimentum condimentum
-              sed."
-            </Typography>
+            <Grid container direction={'column'} justify={'center'}>
+              <Grid item xs={6}>
+                <Typography variant={'body1'} className={classes.desc}>
+                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquam
+                  purus leo, eget ultrices augue mollis non. Donec in nisi vel libero condimentum
+                  condimentum sed."
+                </Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography variant={'h6'} align={'center'}>
+                  Price: 20,00 <span className={classes.currency}>EUR.</span>
+                </Typography>
+                <div className={classes.flexboxContainer} align={'center'}>
+                  <div className={classes.flexItem}>
+                    <InputLabel htmlFor="selectsize">Size</InputLabel>
+                    <Select
+                      native
+                      value={state.size}
+                      onChange={handleChange}
+                      inputProps={{
+                        name: 'size',
+                        id: 'selectsize',
+                      }}
+                    >
+                      <option aria-label="None" value="" />
+                      <option value="XS">XS</option>
+                      <option value="S">S</option>
+                      <option value="M">M</option>
+                      <option value="L">L</option>
+                      <option value="XL">XL</option>
+                    </Select>
+                  </div>
+                  <div className={classes.flexItem}>
+                    <TextField
+                      id="qty"
+                      label="Quantity"
+                      type="number"
+                      defaultValue="1"
+                      InputLabelProps={{
+                        shrink: true,
+                      }}
+                    />
+                  </div>
+                  <Button className={classes.flexItem} variant="contained" color="primary">
+                    Į krepšelį
+                  </Button>
+                </div>
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item xs={6}>
-            <Typography variant={'h6'}>
-              Price: 20,00 <span className={classes.currency}>EUR.</span>
-            </Typography>
-            <div className={classes.flexboxContainer}>
-              <div className={classes.flexItem}>
-                <InputLabel htmlFor="selectsize">Size</InputLabel>
-                <Select
-                  native
-                  value={state.size}
-                  onChange={handleChange}
-                  inputProps={{
-                    name: 'size',
-                    id: 'selectsize',
-                  }}
-                >
-                  <option aria-label="None" value="" />
-                  <option value="XS">XS</option>
-                  <option value="S">S</option>
-                  <option value="M">M</option>
-                  <option value="L">L</option>
-                  <option value="XL">XL</option>
-                </Select>
-              </div>
-              <div className={classes.flexItem}>
-                <TextField
-                  id="qty"
-                  label="Quantity"
-                  type="number"
-                  defaultValue="1"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                />
-              </div>
-              <Button className={classes.flexItem} variant="contained" color="primary">
-                Į krepšelį
-              </Button>
-            </div>
-          </Grid>
-        </div>
+        </Grid>
       </Grid>
     </>
   );
