@@ -5,11 +5,12 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 import logo from '../logo.png';
-import shoppingcart from '../shopping_cart.png';
 import {makeStyles} from '@material-ui/core/styles';
 import {useDispatch, useSelector} from 'react-redux';
 import {toggleSidebar} from '../store/actions/sidebar';
 import {isSidebarOpen} from '../store/selectors/sidebar';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import grey from '@material-ui/core/colors/grey';
 
 const useStyles = makeStyles({
   appBar: {
@@ -38,6 +39,7 @@ const useStyles = makeStyles({
 function NavBar() {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const accent = grey[50];
 
   const open = useSelector(isSidebarOpen);
 
@@ -54,6 +56,16 @@ function NavBar() {
       );
     }
   };
+  const shoppingCartButton = () => {
+    if(window.location.pathname == '/shop') {
+      return (
+        <IconButton className={classes.icon} href="/shop/cart" aria-label="Shopping cart">
+            <ShoppingBasketIcon width={'100px'} height={'100px'} color={accent}></ShoppingBasketIcon>
+            
+          </IconButton>
+      );
+    }
+  };
 
   return (
     <>
@@ -61,9 +73,9 @@ function NavBar() {
         <Toolbar>
           {sidebarButton()}
 
-          <IconButton className={classes.icon} href="/" aria-label="home">
+          <Button className={classes.icon} href="/" aria-label="home">
             <img src={logo} alt="logo" width={'200px'} height={'50px'} />
-          </IconButton>
+          </Button>
 
           <div className={classes.grow} />
 
@@ -83,9 +95,7 @@ function NavBar() {
             ABOUT US
           </Button>
           <div className={classes.grow} />
-          <IconButton className={classes.icon} href="/payment" aria-label="home">
-            <img src={shoppingcart} alt="logo" width={'50px'} height={'50px'} />
-          </IconButton>
+          {shoppingCartButton()}
         </Toolbar>
       </AppBar>
       <Toolbar />
