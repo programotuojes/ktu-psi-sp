@@ -12,13 +12,6 @@ function ShoppingCart() {
       </Helmet>
 
       <h1>Shopping Cart</h1>
-
-      <Typography variant={'body1'}>
-        Content coming soon next sprint. <br></br>
-        TODO: <br></br>
-        Amount: dynamically calculated
-        Total price: dynamically calculated.
-      </Typography>
     </>
   );
 }

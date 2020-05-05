@@ -60,7 +60,7 @@ function NavBar() {
     if(window.location.pathname == '/shop') {
       return (
         <IconButton className={classes.icon} href="/shop/cart" aria-label="Shopping cart">
-            <ShoppingBasketIcon width={'100px'} height={'100px'} color={accent}></ShoppingBasketIcon>
+            <ShoppingBasketIcon width={'100px'} height={'100px'} fill={'white'}></ShoppingBasketIcon>
             
           </IconButton>
       );
