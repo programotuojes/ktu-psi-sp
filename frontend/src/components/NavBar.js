@@ -21,6 +21,9 @@ const useStyles = makeStyles({
   spacingBetween: {
     flexGrow: 0.15,
   },
+  spacingLogo: {
+    flexGrow: 0.7
+  },
   icon: {
     marginLeft: '6px',
     padding: '0px',
@@ -79,22 +82,22 @@ function NavBar() {
             <img src={logo} alt="logo" width={'200px'} height={'50px'} />
           </Button>
 
-          <div className={classes.grow} />
+          <div className={classes.spacingLogo} />
 
           <Button className={classes.nav} href="/blog">
-            BLOG
+            BLOGAS
           </Button>
 
           <div className={classes.spacingBetween} />
 
           <Button className={classes.nav} href="/shop">
-            SHOP
+            PARDUOTUVĖ
           </Button>
 
           <div className={classes.spacingBetween} />
 
           <Button className={classes.nav} href="/about">
-            ABOUT US
+            APIE MUS
           </Button>
           <div className={classes.grow} />
           {shoppingCartButton()}
