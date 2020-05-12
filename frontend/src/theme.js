@@ -8,9 +8,13 @@ const theme = createMuiTheme({
     secondary: yellow,
   },
   overrides: {
-    MuiButton: {
-      text: {
-        'text-transform': 'none',
+    MuiSnackbarContent: {
+      root: {
+        minWidth: 0,
+        flexGrow: 'unset',
+        '@media (min-width: 600px)': {
+          minWidth: 0,
+        },
       },
     },
   },
