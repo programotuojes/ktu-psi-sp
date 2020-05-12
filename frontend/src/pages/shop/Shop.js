@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
 import { getCategory } from '../../store/selectors/sidebar';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { get, GET_PRODUCTS_IN_CATEGORY } from '../../util/network';
+import { get, GET_PRODUCTS_IN_CATEGORY } from '../../utils/network';
 import { Container } from '@material-ui/core';
 
 const title = 'Shop';
@@ -51,7 +51,7 @@ function Shop() {
           <GridList className={classes.gridList} cellHeight={500} cols={3}>
             {products.map((product) => (
               <GridListTile key={product.id}>
-                <ItemTemplate image={product.image} title={product.title} price={product.price} />
+                <ItemTemplate product={product} />
               </GridListTile>
             ))}
           </GridList>
