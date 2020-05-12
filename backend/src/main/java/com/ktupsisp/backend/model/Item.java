@@ -1,11 +1,12 @@
 package com.ktupsisp.backend.model;
 
+import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.Data;
 
@@ -20,7 +21,13 @@ public class Item {
   private String description;
   private int price;
 
-  @OneToOne(fetch = FetchType.LAZY)
+  @OneToOne
   @JoinColumn(name = "category_id")
   private Category category;
+
+  @OneToMany(mappedBy = "item")
+  private List<ItemDetail> itemDetails;
+
+  @OneToMany(mappedBy = "item")
+  private List<Picture> pictures;
 }
