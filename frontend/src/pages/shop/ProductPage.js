@@ -35,8 +35,17 @@ import {
   TextField,
   Typography,
 } from '@material-ui/core';
+import placeholderImage from './placeholder-image.png';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
+  root: {
+    [theme.breakpoints.up('xs')]: {
+      marginBottom: 70,
+    },
+    [theme.breakpoints.up('sm')]: {
+      marginBottom: 20,
+    },
+  },
   title: {
     fontSize: '2em',
     margin: 40,
@@ -58,13 +67,14 @@ const useStyles = makeStyles({
   basketButton: {
     width: 145,
   },
-});
+}));
 
 function ProductPage() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { id } = useParams();
 
+  const [showThumbnails, setShowThumbnails] = useState(true);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const product = useSelector(getProduct);
   const selectedSize = useSelector(getSelectedSize);
@@ -132,9 +142,15 @@ function ProductPage() {
               {product.title}
             </Typography>
 
-            <Grid container direction={'row'} justify={'center'} style={{ marginBottom: 70 }}>
-              <Grid item sm={3} className={classes.gallery}>
-                <ImageGallery items={parsePictures()} showPlayButton={false} />
+            <Grid container direction={'row'} justify={'center'} className={classes.root}>
+              <Grid item xs={6} sm={3} className={classes.gallery}>
+                <ImageGallery
+                  items={parsePictures()}
+                  showPlayButton={false}
+                  onErrorImageURL={placeholderImage}
+                  showThumbnails={showThumbnails}
+                  onScreenChange={() => setShowThumbnails(!showThumbnails)}
+                />
               </Grid>
 
               <Grid item sm={6} container direction={'column'} alignItems={'center'}>
