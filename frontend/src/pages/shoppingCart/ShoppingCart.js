@@ -12,21 +12,18 @@ import { Button } from '@material-ui/core';
 
 const title = 'Shopping Cart';
 const useStyles = makeStyles({
-  item: {
-    
-  },
   image: {
     height:'100px',
     display: 'inline'
   },
   text: {
     textAlign: 'center',
-    fontFamily: 'Open Sans',
+    fontFamily: 'Roboto',
     fontSize: 'small'
   },
-  headertext: {
+  headerText: {
     textAlign: 'center',
-    fontFamily: 'Open Sans',
+    fontFamily: 'Roboto',
     fontWeight: 'bold'
   }
 });
@@ -42,19 +39,19 @@ function ShoppingCart() {
         <Grid item xs="2" className={classes.item}>
           
         </Grid>
-        <Grid item xs="2" className={classes.headertext}>
+        <Grid item xs="2" className={classes.headerText}>
           Rūbas ir kaina
         </Grid>
-        <Grid item xs="1" className={classes.headertext}>
+        <Grid item xs="1" className={classes.headerText}>
           Dydis
         </Grid>
-        <Grid item xs="1" className={classes.headertext}>
+        <Grid item xs="1" className={classes.headerText}>
           Kiekis
         </Grid>
-        <Grid item xs="2" className={classes.headertext}>
+        <Grid item xs="2" className={classes.headerText}>
           
         </Grid>
-        <Grid item xs="2" className={classes.headertext}>
+        <Grid item xs="2" className={classes.headerText}>
           Galutinė kaina
         </Grid>
         <Grid item xs="2">
@@ -106,30 +103,6 @@ function ShoppingCart() {
     );
   };
 
-  const Footer = () => {
-    return(
-      <Grid container
-      alignItems="flex-start" spacing={2}
-      style={{borderTop:"2px ridge", backgroundColor:'white', marginBottom:'5px', display:'flex', flexWrap:'wrap', borderBottom:'2px ridge'}}>
-        <Grid item xs={6}>
-        </Grid>
-        <Grid item xs={2}>
-          <Typography variant='h5' style={{fontFamily:'Open Sans', textAlign:'center'}}>
-            Iš viso:
-          </Typography>
-        </Grid>
-        <Grid item xs={2}>
-        <Typography variant='h5' style={{fontFamily:'Open Sans', fontWeight:'bold'}}>
-            15.00 EUR
-          </Typography>
-        </Grid>
-        <Grid item xs={2}>
-          <Button variant='contained' style={{backgroundColor:'lightblue'}}>Pirkti</Button>
-        </Grid>
-      </Grid>
-    );
-  };
-
   return (
     <>
       <Helmet>
@@ -142,7 +115,6 @@ function ShoppingCart() {
         </Typography>
         {Header()}
         {Item()}
-        {Footer()}
       </Container>
     </>
   );
