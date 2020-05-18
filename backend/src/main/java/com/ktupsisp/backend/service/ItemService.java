@@ -1,6 +1,7 @@
 package com.ktupsisp.backend.service;
 
 import com.ktupsisp.backend.dto.CategoryItemDto;
+import com.ktupsisp.backend.exception.NotFoundException;
 import com.ktupsisp.backend.model.Item;
 import com.ktupsisp.backend.repository.ItemRepository;
 import com.ktupsisp.backend.repository.PictureRepository;
@@ -11,8 +12,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class ItemService {
 
-  private ItemRepository itemRepository;
-  private PictureRepository pictureRepository;
+  private final ItemRepository itemRepository;
+  private final PictureRepository pictureRepository;
 
   public ItemService(ItemRepository itemRepository, PictureRepository pictureRepository) {
     this.itemRepository = itemRepository;
@@ -35,5 +36,10 @@ public class ItemService {
     }
 
     return itemsDto;
+  }
+
+  public Item getItem(long id) {
+    return itemRepository.getItemById(id)
+        .orElseThrow(() -> new NotFoundException("Prekė su id " + id + " nerasta."));
   }
 }

@@ -1,116 +1,195 @@
-import React from 'react';
-import {Helmet} from 'react-helmet-async';
-import Typography from '@material-ui/core/Typography';
-import {makeStyles} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import img from './jacket1.jpg';
-import {Button, InputLabel, Select} from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import { makeStyles } from '@material-ui/core/styles';
+import ImageGallery from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
+import { formatPrice, productQuantityError, productSizeError } from '../../utils/util';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  getErrors,
+  getProduct,
+  getQuantityForSize,
+  getSelectedQuantity,
+  getSelectedSize,
+  isLoading,
+} from '../../store/selectors/productPage';
+import {
+  fetchProduct,
+  selectQuantity,
+  selectSize,
+  setError,
+} from '../../store/actions/productPage';
+import ErrorBox from '../../components/ErrorBox';
+import { PRODUCT_ERROR, QUANTITY_ERROR, SIZE_ERROR } from '../../utils/constants';
+import LoadingCircle from '../../components/LoadingCircle';
+import {
+  Button,
+  FormControl,
+  FormHelperText,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Snackbar,
+  TextField,
+  Typography,
+} from '@material-ui/core';
+import placeholderImage from './placeholder-image.png';
 
-const useStyles = makeStyles({
-  img: {
-    height: 600,
-    width: 500,
-    margin: 30,
-    float: 'left',
+const useStyles = makeStyles((theme) => ({
+  root: {
+    [theme.breakpoints.up('xs')]: {
+      marginBottom: 70,
+    },
+    [theme.breakpoints.up('sm')]: {
+      marginBottom: 20,
+    },
   },
-  desc: {
-    textAlign: 'center',
-    padding: 20,
-    paddingTop: 50,
+  title: {
+    fontSize: '2em',
+    margin: 40,
   },
-
-  currency: {
-    fontWeight: 'bold',
+  description: {
+    margin: '0px 30px 50px',
   },
-  text: {
-    marginTop: '32px',
+  gallery: {
+    margin: '0px 16px 16px',
   },
-  flexboxContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+  sizeForm: {
+    minWidth: 65,
+    margin: 8,
   },
-  flexItem: {
-    marginTop: 20,
+  quantityForm: {
+    width: 65,
+    margin: 8,
   },
-});
-
-const title = 'Some random product';
+  basketButton: {
+    width: 145,
+  },
+}));
 
 function ProductPage() {
   const classes = useStyles();
-  const handleChange = (event) => {
-    const name = event.target.name;
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
-  };
-  const [state, setState] = React.useState({
-  });
+  const dispatch = useDispatch();
+  const { id } = useParams();
+
+  const [showThumbnails, setShowThumbnails] = useState(true);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const product = useSelector(getProduct);
+  const selectedSize = useSelector(getSelectedSize);
+  const selectedQuantity = useSelector(getSelectedQuantity);
+  const quantityForSize = useSelector(getQuantityForSize(selectedSize));
+  const errors = useSelector(getErrors);
+  const loading = useSelector(isLoading);
+
+  function parsePictures() {
+    let pictures = [];
+    product.pictures.forEach((item) => pictures.push({ original: item.url, thumbnail: item.url }));
+    return pictures;
+  }
+
+  function onSizeChange(event) {
+    dispatch(selectSize(event.target.value));
+  }
+
+  function onQuantityChange(event) {
+    dispatch(selectQuantity(event.target.value));
+  }
+
+  function validate() {
+    const sizeError = productSizeError(selectedSize);
+    const quantityError = productQuantityError(selectedQuantity, quantityForSize);
+
+    if (sizeError) {
+      dispatch(setError(SIZE_ERROR, sizeError));
+      return false;
+    }
+
+    if (quantityError) {
+      dispatch(setError(QUANTITY_ERROR, quantityError));
+      return false;
+    }
+
+    return true;
+  }
+
+  function submit() {
+    if (validate()) setSnackbarOpen(true);
+  }
+
+  useEffect(() => {
+    dispatch(fetchProduct(id));
+  }, [dispatch, id]);
+
   return (
     <>
-      <Helmet>
-        <title>{title}</title>
-      </Helmet>
-      <Grid container-spacing={3}>
-        <Grid item xs={12}>
-          <Typography variant={'h4'} align={'center'} className={classes.text}>
-            "Lorem ipsum"
-          </Typography>
-        </Grid>
-        <div align="center">
-          <img src={img} alt="Lorem ipsum" className={classes.img} />
-          <Grid item xs={6}>
-            <Typography variant={'body1'} className={classes.desc}>
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse aliquam purus
-              leo, eget ultrices augue mollis non. Donec in nisi vel libero condimentum condimentum
-              sed."
+      <Snackbar
+        open={snackbarOpen}
+        onClose={() => setSnackbarOpen(false)}
+        autoHideDuration={2000}
+        message={'Pirkinys pridėtas į krepšelį'}
+      />
+
+      {(loading && <LoadingCircle />) ||
+        (!errors[PRODUCT_ERROR] && (
+          <>
+            <Helmet>
+              <title>{product.title}</title>
+            </Helmet>
+
+            <Typography className={classes.title} align={'center'}>
+              {product.title}
             </Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography variant={'h6'}>
-              Price: 20,00 <span className={classes.currency}>EUR.</span>
-            </Typography>
-            <div className={classes.flexboxContainer}>
-              <div className={classes.flexItem}>
-                <InputLabel htmlFor="selectsize">Size</InputLabel>
-                <Select
-                  native
-                  value={state.size}
-                  onChange={handleChange}
-                  inputProps={{
-                    name: 'size',
-                    id: 'selectsize',
-                  }}
-                >
-                  <option aria-label="None" value="" />
-                  <option value="XS">XS</option>
-                  <option value="S">S</option>
-                  <option value="M">M</option>
-                  <option value="L">L</option>
-                  <option value="XL">XL</option>
-                </Select>
-              </div>
-              <div className={classes.flexItem}>
-                <TextField
-                  id="qty"
-                  label="Quantity"
-                  type="number"
-                  defaultValue="1"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
+
+            <Grid container direction={'row'} justify={'center'} className={classes.root}>
+              <Grid item xs={6} sm={3} className={classes.gallery}>
+                <ImageGallery
+                  items={parsePictures()}
+                  showPlayButton={false}
+                  onErrorImageURL={placeholderImage}
+                  showThumbnails={showThumbnails}
+                  onScreenChange={() => setShowThumbnails(!showThumbnails)}
                 />
-              </div>
-              <Button className={classes.flexItem} variant="contained" color="primary">
-                Į krepšelį
-              </Button>
-            </div>
-          </Grid>
-        </div>
-      </Grid>
+              </Grid>
+
+              <Grid item sm={6} container direction={'column'} alignItems={'center'}>
+                <Typography className={classes.description}>{product.description}</Typography>
+                <Typography>{formatPrice(product.price)}</Typography>
+
+                <Grid container justify={'center'}>
+                  <FormControl className={classes.sizeForm} error={Boolean(errors[SIZE_ERROR])}>
+                    <InputLabel id={'size-label'}>Dydis</InputLabel>
+                    <Select value={selectedSize} onChange={onSizeChange} labelId={'size-label'}>
+                      {product.itemDetails.map((details, index) => (
+                        <MenuItem value={details.size} key={index}>
+                          {details.size}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                    <FormHelperText>{errors[SIZE_ERROR]}</FormHelperText>
+                  </FormControl>
+
+                  <TextField
+                    className={classes.quantityForm}
+                    label={'Kiekis'}
+                    type={'number'}
+                    value={selectedQuantity}
+                    onChange={onQuantityChange}
+                    inputProps={{ step: 1, min: 1 }}
+                    error={Boolean(errors[QUANTITY_ERROR])}
+                    helperText={errors[QUANTITY_ERROR]}
+                    FormHelperTextProps={{ style: { width: 120 } }}
+                  />
+                </Grid>
+
+                <Button className={classes.basketButton} variant={'contained'} onClick={submit}>
+                  Į krepšelį
+                </Button>
+              </Grid>
+            </Grid>
+          </>
+        )) || <ErrorBox message={errors[PRODUCT_ERROR]} />}
     </>
   );
 }
