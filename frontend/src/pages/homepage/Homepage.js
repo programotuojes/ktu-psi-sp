@@ -6,7 +6,7 @@ import shopLogo from './shopLogo.jpg';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
-const title = 'Homepage';
+const title = 'The Wall';
 
 const useStyles = makeStyles({
   blog_header: {

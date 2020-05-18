@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const title = 'About';
+const title = 'The Wall - Apie';
 
 function About() {
   return (
@@ -10,7 +10,7 @@ function About() {
         <title>{title}</title>
       </Helmet>
 
-      <h1>About page</h1>
+      <h1>Apie The Wall</h1>
     </>
   );
 }
