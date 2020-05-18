@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     textAlign: 'left',
   },
 });
-const title = 'Payment';
+const title = 'The Wall - Apmokėjimas';
 
 function Payment() {
   const classes = useStyles();

@@ -6,11 +6,9 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-roboto';
 import { Typography } from '@material-ui/core';
-import img from '../shop/jacket1.jpg';
-import { Button } from '@material-ui/core';
+import img from '../shop/placeholder-image.png';
 
-
-const title = 'Shopping Cart';
+const title = 'The Wall - Pirkiniai';
 const useStyles = makeStyles({
   image: {
     height:'100px',

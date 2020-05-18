@@ -11,7 +11,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import { get, GET_PRODUCTS_IN_CATEGORY } from '../../utils/network';
 import { Container } from '@material-ui/core';
 
-const title = 'Shop';
+const title = 'The Wall - Parduotuvė';
 
 const useStyles = makeStyles({
   root: {
