@@ -12,7 +12,7 @@ import blog6 from './blog6.jpeg';
 import Card from '@material-ui/core/Card';
 import { post } from './posts.js';
 
-const title = 'Blog';
+const title = 'The Wall - blogas';
 
 //image desineje card'o puseje
 class BlogPost extends Component {

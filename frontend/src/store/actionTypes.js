@@ -1,2 +1,8 @@
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const SELECT_CATEGORY = 'SELECT_CATEGORY';
+
+export const SET_PRODUCT = 'SET_PRODUCT';
+export const SELECT_SIZE = 'SELECT_SIZE';
+export const SELECT_QUANTITY = 'SELECT_QUANTITY';
+export const SET_ERROR = 'SET_ERROR';
+export const LOADING_PRODUCT = 'LOADING_PRODUCT';

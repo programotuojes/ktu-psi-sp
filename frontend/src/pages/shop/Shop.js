@@ -8,9 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
 import { getCategory } from '../../store/selectors/sidebar';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import { get, GET_PRODUCTS_IN_CATEGORY } from '../../util/network';
+import { get, GET_PRODUCTS_IN_CATEGORY } from '../../utils/network';
+import { Container } from '@material-ui/core';
 
-const title = 'Shop';
+const title = 'The Wall - Parduotuvė';
 
 const useStyles = makeStyles({
   root: {
@@ -19,7 +20,8 @@ const useStyles = makeStyles({
   categoryLabel: {
     fontSize: '2em',
     margin: '32px',
-    fontStyle: 'italic',
+    fontStyle: 'bold',
+    fontFamily: 'Open Sans'
   },
 });
 
@@ -40,20 +42,21 @@ function Shop() {
       </Helmet>
 
       <Sidebar />
+      <Container maxWidth="xl">
+        <Typography align={'center'} className={classes.categoryLabel}>
+          {category.name}
+        </Typography>
 
-      <Typography align={'center'} className={classes.categoryLabel}>
-        {category.name}
-      </Typography>
-
-      <div className={classes.root} align={'center'}>
-        <GridList className={classes.gridList} cellHeight={500} cols={3}>
-          {products.map((product) => (
-            <GridListTile key={product.id}>
-              <ItemTemplate image={product.image} title={product.title} price={product.price} />
-            </GridListTile>
-          ))}
-        </GridList>
-      </div>
+        <div className={classes.root} align={'center'}>
+          <GridList className={classes.gridList} cellHeight={500} cols={3}>
+            {products.map((product) => (
+              <GridListTile key={product.id}>
+                <ItemTemplate product={product} />
+              </GridListTile>
+            ))}
+          </GridList>
+        </div>
+      </Container>
     </>
   );
 }

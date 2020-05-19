@@ -17,15 +17,16 @@ function App() {
   return (
     <HelmetProvider>
       <ThemeProvider theme={theme}>
-        <NavBar />
         <BrowserRouter>
+          <NavBar />
+
           <Switch>
             <Route exact path={'/'} component={Homepage} />
             <Route exact path={'/shop'} component={Shop} />
             <Route exact path={'/about'} component={About} />
             <Route exact path={'/blog'} component={Blog} />
             <Route exact path={'/payment'} component={Payment} />
-            <Route exact path={'/shop/productPage'} component={ProductPage} />
+            <Route exact path={'/shop/product/:id'} component={ProductPage} />
             <Route exact path={'/payment/confirmation'} component={PaymentConfirmation} />
             <Route exact path={'/shop/cart'} component={ShoppingCart} />
           </Switch>
