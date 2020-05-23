@@ -53,7 +53,7 @@ class BlogPost extends Component {
             sm={6}
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
           >
-            <img src={this.props.img} style={{ width: '95%', height: '95%' }}></img>
+            <img src={this.props.img} style={{ width: '95%', height: '95%' }} alt={'Blogas'} />
           </Grid>
         </Grid>
       </Card>
@@ -81,7 +81,7 @@ class BlogPost1 extends Component {
             sm={6}
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
           >
-            <img src={this.props.img} style={{ width: '95%', height: '95%' }}></img>
+            <img src={this.props.img} style={{ width: '95%', height: '95%' }} alt={'Blogas'} />
           </Grid>
           <Grid item sm={6} style={{ textAlign: 'center' }}>
             <Typography
@@ -144,39 +144,19 @@ function Blog() {
               like={79}
               view={220}
               comments={32}
-            ></BlogPost>
-            <BlogPost1
-              date={'2020.03.05'}
-              title={'Bučinys'}
-              img={blog5}
-              text={post.post5}
-            ></BlogPost1>
+            />
+            <BlogPost1 date={'2020.03.05'} title={'Bučinys'} img={blog5} text={post.post5} />
             <BlogPost
               date={'2020.02.25'}
               title={'Didysis išminčius'}
               img={blog3}
               text={post.post3}
-            ></BlogPost>
+            />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <BlogPost1
-              date={'2020.04.30'}
-              title={'Sapnas'}
-              img={blog4}
-              text={post.post4}
-            ></BlogPost1>
-            <BlogPost
-              date={'2020.02.03'}
-              title={'Kosmoso atletas'}
-              img={blog2}
-              text={post.post2}
-            ></BlogPost>
-            <BlogPost
-              date={'2020.02.22'}
-              title={'Sugrįžau namo'}
-              img={blog6}
-              text={post.post6}
-            ></BlogPost>
+            <BlogPost1 date={'2020.04.30'} title={'Sapnas'} img={blog4} text={post.post4} />
+            <BlogPost date={'2020.02.03'} title={'Kosmoso atletas'} img={blog2} text={post.post2} />
+            <BlogPost date={'2020.02.22'} title={'Sugrįžau namo'} img={blog6} text={post.post6} />
           </Grid>
         </Grid>
       </Container>
