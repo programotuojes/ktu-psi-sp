@@ -19,6 +19,10 @@ export function productQuantityError(selectedQuantity, quantityForSize) {
     return 'Kiekis turi būti daugiau nei 0';
   }
 
+  if (selectedQuantity >= 10) {
+    return 'Kiekis turi ne didesnis nei 10';
+  }
+
   if (selectedQuantity % 1 !== 0) {
     return 'Kiekis turi būti sveikas skaičius';
   }
