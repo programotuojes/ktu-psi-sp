@@ -75,7 +75,7 @@ function ShoppingCart() {
           </Typography>
         </Grid>
         <Grid item xs="2">
-          <Button variant="contained" color="#F44336" href="/payment" style={{ width: '100%' }}>
+          <Button variant="contained" color="secondary" href="/payment" style={{ width: '100%' }}>
             PIRKTI
           </Button>
         </Grid>
