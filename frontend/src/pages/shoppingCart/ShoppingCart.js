@@ -7,36 +7,37 @@ import { makeStyles } from '@material-ui/core/styles';
 import 'typeface-roboto';
 import { Typography } from '@material-ui/core';
 import img from '../shop/placeholder-image.png';
+import { Button } from '@material-ui/core';
 
 const title = 'The Wall - Pirkiniai';
 const useStyles = makeStyles({
   image: {
-    height:'100px',
-    display: 'inline'
+    height: '100px',
+    display: 'inline',
   },
   text: {
     textAlign: 'center',
     fontFamily: 'Roboto',
-    fontSize: 'small'
+    fontSize: 'small',
   },
   headerText: {
     textAlign: 'center',
     fontFamily: 'Roboto',
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
-
 
 function ShoppingCart() {
   const classes = useStyles();
   const Header = () => {
-    return(
-      <Grid container
-      alignItems="flex-start" spacing={2}
-      style={{borderTop:"2px ridge", backgroundColor:'lightgray', marginBottom:'5px'}}>
-        <Grid item xs="2" className={classes.item}>
-          
-        </Grid>
+    return (
+      <Grid
+        container
+        alignItems="flex-start"
+        spacing={2}
+        style={{ borderTop: '2px ridge', backgroundColor: 'lightgray', marginBottom: '5px' }}
+      >
+        <Grid item xs="2" className={classes.item}></Grid>
         <Grid item xs="2" className={classes.headerText}>
           Rūbas ir kaina
         </Grid>
@@ -46,9 +47,7 @@ function ShoppingCart() {
         <Grid item xs="1" className={classes.headerText}>
           Kiekis
         </Grid>
-        <Grid item xs="2" className={classes.headerText}>
-          
-        </Grid>
+        <Grid item xs="2" className={classes.headerText}></Grid>
         <Grid item xs="2" className={classes.headerText}>
           Galutinė kaina
         </Grid>
@@ -58,45 +57,74 @@ function ShoppingCart() {
       </Grid>
     );
   };
-  
+
+  const Footer = () => {
+    return (
+      <Grid
+        container
+        alignItems="flex-start"
+        spacing={2}
+        style={{ marginTop: '5px', borderTop: '2px ridge', display: 'flex', flexWrap: 'wrap' }}
+      >
+        <Grid item xs="8" alignItems="flex-end" style={{ textAlign: 'right' }}>
+          <Typography variant="h5">Iš viso:</Typography>
+        </Grid>
+        <Grid item xs="2" style={{ textAlign: 'center' }}>
+          <Typography variant="h6" style={{ fontWeight: 'bold' }}>
+            15.00 EUR
+          </Typography>
+        </Grid>
+        <Grid item xs="2">
+          <Button variant="contained" color="#F44336" href="/payment" style={{ width: '100%' }}>
+            PIRKTI
+          </Button>
+        </Grid>
+      </Grid>
+    );
+  };
+
   const Item = () => {
-    return(
-      <Grid container alignItems="flex-start" spacing={2} style={{borderTop:"2px ridge", backgroundColor:'lightgray', display:'flex', flexWrap:'wrap'}}>
+    return (
+      <Grid
+        container
+        alignItems="flex-start"
+        spacing={2}
+        style={{
+          borderTop: '2px ridge',
+          backgroundColor: 'lightgray',
+          display: 'flex',
+          flexWrap: 'wrap',
+        }}
+      >
         <Grid item xs="2">
           <img src={img} alt="Lorem ipsum" className={classes.image} />
-          </Grid>
-          <Grid item xs="2" className={classes.text}>
-            <Typography variant='body1'>
-              Švarkas
-            </Typography>
-            <Typography variant='body2' style={{fontWeight:'bold'}}>
-              15.00 EUR
-            </Typography>
-          </Grid>
-          <Grid item xs="1" className={classes.text}>
-            <Typography variant='body1' style={{borderBottom:'1px solid black', backgroundColor:'white'}}>
-              S
-            </Typography>
-          </Grid>
-          <Grid item xs="1" className={classes.text}>
-            <input
-                type='number'
-                id={'quantity'}
-                pattern='[0-9]{0,2}'
-                value={1}
-            />
-          </Grid>
-          <Grid item xs="2">
-            
-          </Grid>
-          <Grid item xs="2" className={classes.text}>
-          <Typography variant='body1' style={{fontWeight:'bold'}}>
-              15.00 EUR
-            </Typography>
-          </Grid>
-          <Grid item xs="2">
-            <DeleteIcon arial='Delete item' style={{color:'#8b0000'}}/>
-          </Grid>
+        </Grid>
+        <Grid item xs="2" className={classes.text}>
+          <Typography variant="body1">Švarkas</Typography>
+          <Typography variant="body2" style={{ fontWeight: 'bold' }}>
+            15.00 EUR
+          </Typography>
+        </Grid>
+        <Grid item xs="1" className={classes.text}>
+          <Typography
+            variant="body1"
+            style={{ borderBottom: '1px solid black', backgroundColor: 'white' }}
+          >
+            S
+          </Typography>
+        </Grid>
+        <Grid item xs="1" className={classes.text}>
+          <input type="number" id={'quantity'} pattern="[0-9]{0,2}" value={1} />
+        </Grid>
+        <Grid item xs="2"></Grid>
+        <Grid item xs="2" className={classes.text}>
+          <Typography variant="body1" style={{ fontWeight: 'bold' }}>
+            15.00 EUR
+          </Typography>
+        </Grid>
+        <Grid item xs="2">
+          <DeleteIcon arial="Delete item" style={{ color: '#8b0000' }} />
+        </Grid>
       </Grid>
     );
   };
@@ -108,11 +136,12 @@ function ShoppingCart() {
       </Helmet>
 
       <Container maxWidth="lg">
-        <Typography variant="h2" style={{marginBottom:'10px'}}>
+        <Typography variant="h2" style={{ marginBottom: '10px' }}>
           Pirkiniai
         </Typography>
         {Header()}
         {Item()}
+        {Footer()}
       </Container>
     </>
   );
