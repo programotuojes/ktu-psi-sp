@@ -29,6 +29,7 @@ const validate = (values) => {
     errors.lastName = 'Pavardė turi būti tarp 2 ir 50 simbolių';
   }
 
+  if (!values.email.trim()) errors.email = 'Privalomas laukas';
   if (
     values.email.trim() &&
     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email.trim())
