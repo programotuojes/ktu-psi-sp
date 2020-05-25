@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import { Toolbar } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
@@ -46,6 +46,7 @@ function NavBar() {
   const classes = useStyles();
   const dispatch = useDispatch();
   const location = useLocation();
+  const history = useHistory();
 
   const open = useSelector(isSidebarOpen);
   const [showSidebar, setShowSidebar] = useState(false);
@@ -69,7 +70,11 @@ function NavBar() {
   const shoppingCartButton = () => {
     if (showCart) {
       return (
-        <IconButton className={classes.icon} href="/shop/cart" aria-label="Shopping cart">
+        <IconButton
+          className={classes.icon}
+          onClick={() => history.push('/shop/cart')}
+          aria-label="Shopping cart"
+        >
           <ShoppingBasketIcon width={'100px'} height={'100px'} className={classes.icons} />
         </IconButton>
       );
