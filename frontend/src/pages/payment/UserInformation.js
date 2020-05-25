@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, formatMs } from '@material-ui/core/styles';
 import { useFormik } from 'formik';
 import { Button, Grid } from '@material-ui/core';
 
@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     color: '#D8000C',
   },
 }));
-
 const validate = (values) => {
   const errors = {};
 
@@ -65,6 +64,7 @@ export default function UserInformation() {
     //Called after you click on Submit button below
     onSubmit: (values) => {
       //do something with values
+      this.props.push('/payment/confirmation');
     },
   });
 
@@ -164,7 +164,7 @@ export default function UserInformation() {
               variant="contained"
               color="secondary"
               type="submit"
-              url={'/payment/confirmation'}
+              href={'/payment/confirmation'}
               style={{ width: '50%' }}
             >
               APMOKĖTI
