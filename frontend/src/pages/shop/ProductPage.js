@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { makeStyles } from '@material-ui/core/styles';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import { formatPrice, productQuantityError, productSizeError } from '../../utils/util';
+import { addItem, formatPrice, productQuantityError, productSizeError } from '../../utils/util';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getErrors,
@@ -115,7 +115,10 @@ function ProductPage() {
   }
 
   function submit() {
-    if (validate()) setSnackbarOpen(true);
+    if (validate()) {
+      addItem(product, selectedSize, selectedQuantity);
+      setSnackbarOpen(true);
+    }
   }
 
   useEffect(() => {
@@ -176,7 +179,7 @@ function ProductPage() {
                     type={'number'}
                     value={selectedQuantity}
                     onChange={onQuantityChange}
-                    inputProps={{ step: 1, min: 1 }}
+                    inputProps={{ step: 1, min: 1, max: 10 }}
                     error={Boolean(errors[QUANTITY_ERROR])}
                     helperText={errors[QUANTITY_ERROR]}
                     FormHelperTextProps={{ style: { width: 120 } }}

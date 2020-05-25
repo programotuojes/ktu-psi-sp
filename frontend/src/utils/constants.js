@@ -11,3 +11,5 @@ export const CATEGORIES = [
 export const PRODUCT_ERROR = 'PRODUCT_ERROR';
 export const SIZE_ERROR = 'SIZE_ERROR';
 export const QUANTITY_ERROR = 'QUANTITY_ERROR';
+
+export const SHOPPING_CART = 'SHOPPING_CART';

@@ -1,119 +1,98 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import { Container } from '@material-ui/core';
-import { Grid } from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import 'typeface-roboto';
-import { Typography } from '@material-ui/core';
-import img from '../shop/placeholder-image.png';
+import CartList from './CartList';
+import { formatPrice, getCart, getTotalPrice, validateCartQuantities } from '../../utils/util';
+import Typography from '@material-ui/core/Typography';
+import { Button, Divider } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
-const title = 'The Wall - Pirkiniai';
 const useStyles = makeStyles({
-  image: {
-    height:'100px',
-    display: 'inline'
+  pageTitle: {
+    marginTop: 30,
+    marginBottom: 30,
+    fontSize: '2em',
   },
-  text: {
-    textAlign: 'center',
-    fontFamily: 'Roboto',
-    fontSize: 'small'
+  paper: {
+    padding: 16,
+    margin: 8,
   },
-  headerText: {
-    textAlign: 'center',
-    fontFamily: 'Roboto',
-    fontWeight: 'bold'
-  }
+  totalPrice: {
+    fontSize: '1.2em',
+  },
+  emptyMessage: {
+    marginTop: 30,
+    fontSize: '1.25em',
+  },
 });
 
-
 function ShoppingCart() {
+  document.title = 'Pirkinių krepšelis';
+
   const classes = useStyles();
-  const Header = () => {
-    return(
-      <Grid container
-      alignItems="flex-start" spacing={2}
-      style={{borderTop:"2px ridge", backgroundColor:'lightgray', marginBottom:'5px'}}>
-        <Grid item xs="2" className={classes.item}>
-          
-        </Grid>
-        <Grid item xs="2" className={classes.headerText}>
-          Rūbas ir kaina
-        </Grid>
-        <Grid item xs="1" className={classes.headerText}>
-          Dydis
-        </Grid>
-        <Grid item xs="1" className={classes.headerText}>
-          Kiekis
-        </Grid>
-        <Grid item xs="2" className={classes.headerText}>
-          
-        </Grid>
-        <Grid item xs="2" className={classes.headerText}>
-          Galutinė kaina
-        </Grid>
-        <Grid item xs="2">
-          Šalinti
-        </Grid>
-      </Grid>
-    );
-  };
-  
-  const Item = () => {
-    return(
-      <Grid container alignItems="flex-start" spacing={2} style={{borderTop:"2px ridge", backgroundColor:'lightgray', display:'flex', flexWrap:'wrap'}}>
-        <Grid item xs="2">
-          <img src={img} alt="Lorem ipsum" className={classes.image} />
-          </Grid>
-          <Grid item xs="2" className={classes.text}>
-            <Typography variant='body1'>
-              Švarkas
-            </Typography>
-            <Typography variant='body2' style={{fontWeight:'bold'}}>
-              15.00 EUR
-            </Typography>
-          </Grid>
-          <Grid item xs="1" className={classes.text}>
-            <Typography variant='body1' style={{borderBottom:'1px solid black', backgroundColor:'white'}}>
-              S
-            </Typography>
-          </Grid>
-          <Grid item xs="1" className={classes.text}>
-            <input
-                type='number'
-                id={'quantity'}
-                pattern='[0-9]{0,2}'
-                value={1}
-            />
-          </Grid>
-          <Grid item xs="2">
-            
-          </Grid>
-          <Grid item xs="2" className={classes.text}>
-          <Typography variant='body1' style={{fontWeight:'bold'}}>
-              15.00 EUR
-            </Typography>
-          </Grid>
-          <Grid item xs="2">
-            <DeleteIcon arial='Delete item' style={{color:'#8b0000'}}/>
-          </Grid>
-      </Grid>
-    );
-  };
+  const history = useHistory();
+
+  const [, setUpdate] = useState({});
+  const cart = getCart();
+
+  function rerender() {
+    setUpdate({});
+  }
+
+  function submit() {
+    // TODO don't let user simply navigate to /payment without verifying their cart
+    if (validateCartQuantities()) history.push('/payment');
+    rerender();
+  }
 
   return (
     <>
-      <Helmet>
-        <title>{title}</title>
-      </Helmet>
+      <Typography className={classes.pageTitle} align={'center'}>
+        Krepšelis
+      </Typography>
 
-      <Container maxWidth="lg">
-        <Typography variant="h2" style={{marginBottom:'10px'}}>
-          Pirkiniai
+      {(cart.length !== 0 && (
+        <Grid container justify={'center'}>
+          <Grid item sm={7}>
+            <CartList cart={cart} rerender={rerender} />
+          </Grid>
+
+          <Grid item sm={2} xs={6}>
+            <Paper elevation={4} className={classes.paper}>
+              <Grid container direction={'column'} spacing={1}>
+                <Grid item container>
+                  <Grid item xs>
+                    <Typography className={classes.totalPrice} align={'left'}>
+                      Iš viso
+                    </Typography>
+                  </Grid>
+
+                  <Grid item xs>
+                    <Typography className={classes.totalPrice} align={'right'}>
+                      {formatPrice(getTotalPrice())}
+                    </Typography>
+                  </Grid>
+                </Grid>
+
+                <Grid item>
+                  <Divider />
+                </Grid>
+
+                <Grid item container justify={'center'}>
+                  <Button variant={'contained'} onClick={submit}>
+                    Mokėti
+                  </Button>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+        </Grid>
+      )) || (
+        <Typography className={classes.emptyMessage} align={'center'}>
+          Pirkinių krepšelis tuščias
         </Typography>
-        {Header()}
-        {Item()}
-      </Container>
+      )}
     </>
   );
 }
