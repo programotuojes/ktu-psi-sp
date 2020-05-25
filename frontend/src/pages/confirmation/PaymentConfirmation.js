@@ -9,8 +9,9 @@ function Confirmation() {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-
-      <h1>Payment Confirmation</h1>
+      {/*nzn kodel mygtukas APMOKETI neveikia, failas UserInformation.js*/}
+      <h1 style={{ 'justify-content': 'center', 'text-align': 'center' }}>Ačiū, kad pirkote!</h1>
+      <meta http-equiv="refresh" content="5;url=/shop" />
     </>
   );
 }
