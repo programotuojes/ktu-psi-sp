@@ -160,7 +160,13 @@ export default function UserInformation() {
         </div>
         <Grid container>
           <Grid item xs={6}>
-            <Button variant="contained" color="secondary" type="submit" style={{ width: '50%' }}>
+            <Button
+              variant="contained"
+              color="secondary"
+              type="submit"
+              url={'/payment/confirmation'}
+              style={{ width: '50%' }}
+            >
               APMOKĖTI
             </Button>
           </Grid>
