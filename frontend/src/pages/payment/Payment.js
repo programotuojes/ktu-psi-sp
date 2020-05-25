@@ -7,6 +7,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Radio from '@material-ui/core/Radio';
 import { Container, Typography } from '@material-ui/core';
+import { formatPrice, getTotalPrice } from '../../utils/util';
 
 const useStyles = makeStyles({
   root: {
@@ -87,7 +88,7 @@ function Payment() {
           </Grid>
         </Grid>
         <Typography variant="h4" style={{ fontFamily: 'roboto' }}>
-          SUMA: 15 EUR.
+          SUMA: {formatPrice(getTotalPrice())}
         </Typography>
       </Container>
     </>
