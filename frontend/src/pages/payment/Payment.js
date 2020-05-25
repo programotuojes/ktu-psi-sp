@@ -24,10 +24,26 @@ const title = 'The Wall - Apmokėjimas';
 
 function Payment() {
   const classes = useStyles();
+
   const [valueDelivery, setValue] = React.useState('shop');
   const [valuePayment, setValuePayment] = React.useState('paysera');
+  const [deliveryPrice, setDeliveryPrice] = React.useState(0);
 
   const handleChangeDelivery = (event) => {
+    switch (event.target.value) {
+      case 'shop':
+        setDeliveryPrice(0);
+        break;
+      case 'courier':
+        setDeliveryPrice(250);
+        break;
+      case 'postOffice':
+        setDeliveryPrice(220);
+        break;
+      default:
+        setDeliveryPrice(0);
+    }
+
     setValue(event.target.value);
   };
 
@@ -88,7 +104,7 @@ function Payment() {
           </Grid>
         </Grid>
         <Typography variant="h4" style={{ fontFamily: 'roboto' }}>
-          SUMA: {formatPrice(getTotalPrice())}
+          SUMA: {formatPrice(getTotalPrice() + deliveryPrice)}
         </Typography>
       </Container>
     </>
