@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import { useFormik } from 'formik';
+import { Button, Grid } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -157,7 +158,14 @@ export default function UserInformation() {
             </div>
           </div>
         </div>
-        <button type="submit">Tęsti</button>
+        <Grid container>
+          <Grid item xs={6}>
+            <Button variant="contained" color="secondary" type="submit" style={{ width: '50%' }}>
+              APMOKĖTI
+            </Button>
+          </Grid>
+          <Grid item xs={6}></Grid>
+        </Grid>
       </form>
     </>
   );
